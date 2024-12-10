@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -65,9 +66,31 @@ kotlin {
 
 
         }
+
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
+
+
+//            implementation(libs.jetbrains.kotlin.test)
+//            implementation(libs.androidx.ui.test.junit4)
+//            implementation(libs.koin.test)
+//            implementation(libs.koin.test.junit4)
+//            implementation(libs.junit)
+
+//            implementation(libs.ui.test.junit4)
+//            implementation(libs.koin.test)
+//            implementation(libs.koin.test.junit4)
+        }
+
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+//            implementation(libs.koin.koin.core)
+
         }
     }
 }

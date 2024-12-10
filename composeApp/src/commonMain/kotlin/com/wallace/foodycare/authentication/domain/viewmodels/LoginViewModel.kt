@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.wallace.foodycare.authentication.domain.events.LoginEvent
 import com.wallace.foodycare.authentication.domain.states.LoginFormState
+import com.wallace.foodycare.core.domain.usecases.ValidateEmail
 import com.wallace.foodycare.core.domain.usecases.ValidateString
 
 class LoginViewModel(
@@ -13,6 +14,7 @@ class LoginViewModel(
 
     var loginFormState by mutableStateOf(LoginFormState())
     private val validateString = ValidateString()
+    private val validateEmail = ValidateEmail()
 
     fun onLoginEvent(event: LoginEvent){
         when(event){
@@ -32,7 +34,7 @@ class LoginViewModel(
     }
 
     private fun logIn() {
-        val emailResult = validateString.execute(text = loginFormState.email)
+        val emailResult = validateEmail.execute(email = loginFormState.email)
         val passwordResult = validateString.execute(text = loginFormState.password)
 
         val hasError = listOf(

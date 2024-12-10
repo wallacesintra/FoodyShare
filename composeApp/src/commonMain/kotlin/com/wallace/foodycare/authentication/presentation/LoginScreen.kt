@@ -137,3 +137,9 @@ fun LoginScreen(
         }
     }
 }
+
+
+@Composable
+fun Texting(){
+    Text("texting")
+}
