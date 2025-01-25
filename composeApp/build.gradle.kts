@@ -65,6 +65,10 @@ kotlin {
             implementation(libs.navigation.compose)
 
 
+            //serial
+            implementation(libs.kotlinx.serialization.json)
+
+
         }
 
         commonTest.dependencies {
@@ -101,8 +105,8 @@ android {
 
     defaultConfig {
         applicationId = "com.wallace.foodycare"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 28
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }

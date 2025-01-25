@@ -4,7 +4,7 @@ import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.runComposeUiTest
 import com.wallace.foodycare.authentication.domain.viewmodels.LoginViewModel
-import com.wallace.foodycare.authentication.presentation.LoginScreen
+import com.wallace.foodycare.authentication.presentation.LoginPage
 import di.testModule
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -43,7 +43,7 @@ class LoginScreenTest: KoinComponent{
         val loginViewModel = get<LoginViewModel>()
 
         setContent {
-            LoginScreen()
+            LoginPage()
 //            Texting()
         }
 

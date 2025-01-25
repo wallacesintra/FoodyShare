@@ -8,6 +8,8 @@ import com.wallace.foodycare.authentication.domain.events.LoginEvent
 import com.wallace.foodycare.authentication.domain.states.LoginFormState
 import com.wallace.foodycare.core.domain.usecases.ValidateEmail
 import com.wallace.foodycare.core.domain.usecases.ValidateString
+import com.wallace.foodycare.core.presentation.navigation.MapScreen
+import com.wallace.foodycare.navController
 
 class LoginViewModel(
 ): ViewModel() {
@@ -50,6 +52,13 @@ class LoginViewModel(
 
             return
         }
+
+        loginFormState = loginFormState.copy(
+            emailError = emailResult.errorMessage,
+            passwordError = passwordResult.errorMessage
+        )
+
+        navController.navigate("MapScreen")
 
 
 
