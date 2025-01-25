@@ -1,3 +1,4 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -64,10 +65,36 @@ kotlin {
             implementation(libs.navigation.compose)
 
 
+            //serial
+            implementation(libs.kotlinx.serialization.json)
+
+
         }
+
+        commonTest.dependencies {
+            implementation(libs.kotlin.test)
+
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
+
+
+//            implementation(libs.jetbrains.kotlin.test)
+//            implementation(libs.androidx.ui.test.junit4)
+//            implementation(libs.koin.test)
+//            implementation(libs.koin.test.junit4)
+//            implementation(libs.junit)
+
+//            implementation(libs.ui.test.junit4)
+//            implementation(libs.koin.test)
+//            implementation(libs.koin.test.junit4)
+        }
+
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.swing)
+
+//            implementation(libs.koin.koin.core)
+
         }
     }
 }
@@ -78,8 +105,8 @@ android {
 
     defaultConfig {
         applicationId = "com.wallace.foodycare"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 28
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }

@@ -1,16 +1,14 @@
 package com.wallace.foodycare.core.domain.usecases
 
-import com.wallace.foodycare.authentication.domain.usecases.ValidateResult
-
 class ValidateString {
-    fun execute(text: String?): ValidateResult {
+    fun execute(text: String?): ValidationResult {
         if (text.isNullOrBlank()){
-            return ValidateResult(
+            return ValidationResult(
                 successful = false,
                 errorMessage = "Please enter"
             )
         }
-        return ValidateResult(
+        return ValidationResult(
             successful = true
         )
     }
